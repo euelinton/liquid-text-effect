@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Liquid Text Effect using Blotter Js</title>
+    <script src="blotter.min.js"></script>
+    <script src="liquidDistortMaterial.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="main"></div>
+    <script>
+      container = document.getElementById('main')
+
+      const text = new Blotter.Text('Shyov3r', {
+        family: 'serif',
+        size: 150,
+        fill: '#fff',
+        paddingRight: 40,
+        paddingLeft: 40,
+        paddingTop: 30,
+        paddingBottom: 30,
+      })
+
+      const material = new Blotter.LiquidDistortMaterial()
+
+      material.uniforms.uSpeed.value = 0.3
+      material.uniforms.uVolatility.value = 0.1
+      material.uniforms.uSeed.value = 0.1
+
+      const blotter = new Blotter(material, {
+        texts: text
+      })
+
+      const scope = blotter.forText(text)
+
+      scope.appendTo(container)
+
+    </script>
+</body>
+</html>
